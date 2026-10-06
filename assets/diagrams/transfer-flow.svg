@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 930" role="img" aria-labelledby="t d">
+  <title id="t">Smart Transfer: pairing and file transfer sequence</title>
+  <desc id="d">A sequence between the sending device, a cloud pairing lookup that stores metadata only, and the receiving device. The receiver opens a listener and advertises itself on the local network, and optionally writes a short pairing record. The sender finds the receiver by browsing the network, scanning a QR code or entering a six-digit code. The sender then sends a request listing the files, the receiver accepts or declines after a free-space check, and for each file in order the sender asks how many bytes the receiver already holds, streams the remaining bytes in chunks over plain HTTP on the local network, and uses a side channel for pause, resume, cancel and status signals. The receiver finally checks file sizes, copies files to the Downloads folder and offers app installs.</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #e6e9ff; }
+      .h { font-size: 24px; font-weight: 700; }
+      .s { font-size: 14px; fill: #a9b0e0; }
+      .lane { font-size: 15px; font-weight: 700; }
+      .l { font-size: 13px; }
+      .n { font-size: 13px; fill: #e6e9ff; }
+      .ph { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #8f98d6; }
+      .foot { font-size: 13px; fill: #c3c9f2; }
+      .sender { fill: #1b2a52; stroke: #5b8def; stroke-width: 2; }
+      .cloud { fill: #3a2a14; stroke: #e0a43a; stroke-width: 2; }
+      .recv { fill: #14382f; stroke: #3fc79a; stroke-width: 2; }
+      .note { fill: #1c2044; stroke: #4a5299; stroke-width: 1.2; }
+      .band { fill: #151937; }
+      .life { stroke: #3b4287; stroke-width: 1.5; stroke-dasharray: 5 6; }
+      .a { stroke: #7da2ff; stroke-width: 2.2; fill: none; marker-end: url(#ah); }
+      .ab { stroke: #3fc79a; stroke-width: 2.2; fill: none; marker-end: url(#ag); }
+      .big { stroke: #7da2ff; stroke-width: 5; fill: none; marker-end: url(#ah); }
+      .d { stroke: #e0a43a; stroke-width: 2; fill: none; stroke-dasharray: 7 5; marker-end: url(#ao); }
+      .side { stroke: #a9b0e0; stroke-width: 1.8; fill: none; stroke-dasharray: 3 5; marker-end: url(#as); }
+    </style>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7da2ff"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3fc79a"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#e0a43a"/></marker>
+    <marker id="as" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a9b0e0"/></marker>
+  </defs>
+  <rect width="1200" height="930" rx="16" fill="#0d1030"/>
+  <text x="40" y="46" class="h">From pairing to saved files</text>
+  <text x="40" y="72" class="s">File bytes travel directly between the two devices on the local network. The cloud step only helps find the receiver.</text>
+
+  <rect x="24" y="190" width="1152" height="196" rx="10" class="band"/>
+  <rect x="24" y="394" width="1152" height="160" rx="10" class="band"/>
+  <rect x="24" y="562" width="1152" height="264" rx="10" class="band"/>
+  <rect x="24" y="834" width="1152" height="48" rx="10" class="band"/>
+  <text x="40" y="212" class="ph">1  PAIRING</text>
+  <text x="40" y="416" class="ph">2  REQUEST</text>
+  <text x="40" y="584" class="ph">3  TRANSFER, ONE FILE AT A TIME</text>
+  <text x="40" y="856" class="ph">4  FINISH</text>
+
+  <line x1="190" y1="152" x2="190" y2="882" class="life"/>
+  <line x1="600" y1="152" x2="600" y2="882" class="life"/>
+  <line x1="1010" y1="152" x2="1010" y2="882" class="life"/>
+
+  <rect x="90" y="108" width="200" height="44" rx="10" class="sender"/>
+  <text x="190" y="136" text-anchor="middle" class="lane">Sending device</text>
+  <rect x="470" y="108" width="260" height="44" rx="10" class="cloud"/>
+  <text x="600" y="136" text-anchor="middle" class="lane">Pairing lookup (metadata)</text>
+  <rect x="910" y="108" width="200" height="44" rx="10" class="recv"/>
+  <text x="1010" y="136" text-anchor="middle" class="lane">Receiving device</text>
+
+  <rect x="860" y="222" width="300" height="32" rx="8" class="note"/>
+  <text x="1010" y="243" text-anchor="middle" class="n">Open listener, advertise on the LAN</text>
+
+  <line x1="1010" y1="282" x2="604" y2="282" class="d"/>
+  <text x="807" y="274" text-anchor="middle" class="l">Optional record: code, name, LAN address</text>
+
+  <rect x="30" y="302" width="320" height="32" rx="8" class="note"/>
+  <text x="190" y="323" text-anchor="middle" class="n">Browse the LAN, scan a QR or type a code</text>
+
+  <line x1="190" y1="352" x2="596" y2="352" class="d"/>
+  <text x="393" y="344" text-anchor="middle" class="l">Resolve the code or session id</text>
+  <line x1="600" y1="378" x2="194" y2="378" class="d"/>
+  <text x="397" y="370" text-anchor="middle" class="l">Receiver address and port</text>
+
+  <line x1="190" y1="452" x2="1006" y2="452" class="a"/>
+  <text x="598" y="444" text-anchor="middle" class="l">Request: file names, sizes, types and platform</text>
+
+  <rect x="840" y="468" width="340" height="32" rx="8" class="note"/>
+  <text x="1010" y="489" text-anchor="middle" class="n">User accepts or declines; free space checked</text>
+
+  <line x1="1010" y1="532" x2="194" y2="532" class="ab"/>
+  <text x="602" y="524" text-anchor="middle" class="l">Accepted with free bytes, or declined with a reason</text>
+
+  <line x1="190" y1="618" x2="1006" y2="618" class="a"/>
+  <text x="598" y="610" text-anchor="middle" class="l">Ask: how many bytes of this file do you already hold?</text>
+  <line x1="1010" y1="650" x2="194" y2="650" class="ab"/>
+  <text x="602" y="642" text-anchor="middle" class="l">Byte count already on disk (zero for a fresh file)</text>
+
+  <line x1="190" y1="694" x2="1006" y2="694" class="big"/>
+  <text x="598" y="682" text-anchor="middle" class="l">Stream the remaining bytes in chunks over plain HTTP, flushed in batches</text>
+
+  <rect x="30" y="712" width="320" height="32" rx="8" class="note"/>
+  <text x="190" y="733" text-anchor="middle" class="n">Read chunk, write, flush, report progress</text>
+  <rect x="840" y="712" width="340" height="32" rx="8" class="note"/>
+  <text x="1010" y="733" text-anchor="middle" class="n">Append, report progress, stall watchdog</text>
+
+  <line x1="190" y1="778" x2="1006" y2="778" class="side"/>
+  <text x="598" y="770" text-anchor="middle" class="l">Side channel: pause, resume, cancel and status probes</text>
+  <text x="598" y="806" text-anchor="middle" class="s">A dropped link is retried and resumed from the receiver's byte count.</text>
+
+  <rect x="840" y="842" width="340" height="32" rx="8" class="note"/>
+  <text x="1010" y="863" text-anchor="middle" class="n">Check sizes, save files, offer app installs</text>
+
+  <text x="40" y="912" class="foot">The cloud lookup stores pairing metadata only. The local-network transfer uses plain HTTP; no transport encryption is applied.</text>
+</svg>
